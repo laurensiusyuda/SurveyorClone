@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1065997490171",
+    "project_id": "surveyor-26ae5",
+    "storage_bucket": "surveyor-26ae5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065997490171:android:8a9aeda5d68c3b5394dd5e",
+        "android_client_info": {
+          "package_name": "com.example.surveyor_clone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYyzHR0mbxjofbGJFZ2T9Xy32kxZmcvNo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

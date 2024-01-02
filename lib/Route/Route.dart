@@ -4,6 +4,7 @@ import 'package:surveyor_clone/View/Pages/CameraPage.dart';
 import 'package:surveyor_clone/View/Pages/DetailPage.dart';
 import 'package:surveyor_clone/View/Pages/SplashScreen.dart';
 import 'package:surveyor_clone/View/Pages/HomePage.dart';
+import 'package:surveyor_clone/View/Pages/TestView.dart';
 
 class AppRoute {
   static final pages = [
@@ -22,6 +23,10 @@ class AppRoute {
     GetPage(
       name: RouteName.details,
       page: () => DetailScreen(),
+    ),
+    GetPage(
+      name: RouteName.test,
+      page: () => TestViewUser(),
     ),
   ];
 }

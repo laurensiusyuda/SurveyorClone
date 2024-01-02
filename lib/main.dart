@@ -1,16 +1,29 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:surveyor_clone/Controller/DetailController/DetaiUserController.dart';
+import 'package:surveyor_clone/Controller/DetailController/FCMController.dart';
 import 'package:surveyor_clone/Route/Route.dart';
 import 'package:surveyor_clone/Route/RouteName.dart';
 import 'package:surveyor_clone/Controller/LoginController.dart';
 import 'package:surveyor_clone/Controller/GeoLocationControl.dart';
 import 'package:surveyor_clone/Controller/AuthenticationManager.dart';
 import 'package:surveyor_clone/Controller/CameraLocationController.dart';
+import 'Controller/DetailController/DeviceController.dart';
+import 'firebase_options.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await GetStorage.init();
+
+  Get.put(DetailUserController());
+  Get.put(DeviceUserController());
+  Get.put(FCMController());
   Get.put(AuthenticationManager());
   Get.put(LoginController());
   Get.put(ScreenshotController());
