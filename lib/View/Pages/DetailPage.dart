@@ -29,7 +29,7 @@ class DetailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(bottom: 100.0),
-          child: Container(
+          child: SizedBox(
             height: MediaQuery.of(context).size.height -
                 150, // Adjust the height as needed
             child: Obx(
@@ -45,7 +45,7 @@ class DetailScreen extends StatelessWidget {
                     )
                   : GridView.builder(
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
@@ -93,7 +93,7 @@ class DetailScreen extends StatelessWidget {
         height: 50.0,
         child: FloatingActionButton(
           onPressed: () {
-            Get.toNamed(RouteName.camera);
+            Get.offNamed(RouteName.camera);
           },
           backgroundColor: Colors.blue,
           child: Row(

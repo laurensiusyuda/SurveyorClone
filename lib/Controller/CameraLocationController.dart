@@ -95,4 +95,6 @@ class CameraLocationController extends GetxController {
         imageData.ImagePath == imageBytes &&
         imageData.Description == description);
   }
+
+  void updateImage() {}
 }

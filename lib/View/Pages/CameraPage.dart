@@ -59,7 +59,6 @@ class CameraScreen extends StatelessWidget {
                 ),
               ),
 
-              // Real-time error notification
               Obx(
                 () => Visibility(
                   visible: cameraC.errorMessage.isNotEmpty,

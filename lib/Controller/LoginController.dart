@@ -8,7 +8,6 @@ import 'package:surveyor_clone/Controller/AuthenticationManager.dart';
 class LoginController extends GetxController {
   //! Control for showing or hiding password
   final isShowingPassword = true.obs;
-
   //! Service instances for handling authentication and making requests
   late final Request loginService;
   late final AuthenticationManager authManager;
@@ -21,13 +20,7 @@ class LoginController extends GetxController {
     authManager = Get.find();
   }
 
-  /// Function to handle user login.
-  ///
-  /// Parameters:
-  /// - [email]: User's email
-  /// - [password]: User's password
   Future<void> loginuser(String email, String password) async {
-    // Make a login request using the authentication service
     await loginService
         .fetchlogin(LoginRequestModel(email: email, password: password), null)
         .then(
