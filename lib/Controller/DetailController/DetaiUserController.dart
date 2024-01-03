@@ -81,11 +81,6 @@ class DetailUserController extends GetxController {
     } else {
       print("Token Is Null");
     }
-
-    //check on debug console
-    print("Headers: $headers");
-    print("FCMTOken: $token");
-    print("Params: $params");
     isloading.value = false;
   }
 }

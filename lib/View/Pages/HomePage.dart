@@ -3,9 +3,9 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:surveyor_clone/Controller/AuthController/AuthenticationManager.dart';
 import 'package:surveyor_clone/Route/RouteName.dart';
 import 'package:surveyor_clone/Controller/LoginController.dart';
-import 'package:surveyor_clone/Controller/AuthenticationManager.dart';
 import 'package:surveyor_clone/View/Widget/Homepage/UserProfile.dart';
 import 'package:surveyor_clone/Controller/DetailController/DetaiUserController.dart';
 
