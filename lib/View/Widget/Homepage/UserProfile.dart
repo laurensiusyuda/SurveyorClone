@@ -1,7 +1,13 @@
+// ignore_for_file: use_key_in_widget_constructors, file_names
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:surveyor_clone/Controller/DetailController/DetaiUserController.dart';
 
 class UserProfileScreen extends StatelessWidget {
+  final DetailUserController detailController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,78 +29,86 @@ class UserProfileScreen extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(
-              width: 20,
-            ),
-            CircleAvatar(
-              radius: MediaQuery.of(context).size.width * 0.1,
-              backgroundColor: Colors.white,
-              child: Icon(
-                Icons.person,
-                size: MediaQuery.of(context).size.width * 0.15,
-                color: Colors.blue,
+        child: Obx(
+          () => Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(
+                width: 15,
               ),
-            ),
-            const SizedBox(
-              width: 20,
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ListTile(
-                    title: Text(
-                      'Nama : Sudjatmiko',
-                      style: GoogleFonts.lato(
-                        textStyle: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.03),
+              CircleAvatar(
+                radius: MediaQuery.of(context).size.width * 0.1,
+                backgroundColor: Colors.white,
+                child: Icon(
+                  Icons.person,
+                  size: MediaQuery.of(context).size.width * 0.15,
+                  color: Colors.blue,
+                ),
+              ),
+              const SizedBox(
+                width: 15,
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ListTile(
+                      title: Text(
+                        'Nama : ${detailController.userData.isNotEmpty ? detailController.userData.first.data.user.userName : ""}',
+                        style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize:
+                                  MediaQuery.of(context).size.width * 0.028),
+                        ),
+                      ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'NIK : ${detailController.userData.isNotEmpty ? detailController.userData.first.data.user.nik : ""}',
+                            style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: MediaQuery.of(context).size.width *
+                                      0.028),
+                            ),
+                          ),
+                          Text(
+                            'Email : ${detailController.userData.isNotEmpty ? detailController.userData.first.data.user.email : ""}',
+                            style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: MediaQuery.of(context).size.width *
+                                      0.028),
+                            ),
+                          ),
+                          Text(
+                            'Telpon : ${detailController.userData.isNotEmpty ? detailController.userData.first.data.user.phoneNumber : ""}',
+                            style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: MediaQuery.of(context).size.width *
+                                      0.028),
+                            ),
+                          ),
+                          Text(
+                            'Operasional : Surabaya',
+                            style: GoogleFonts.lato(
+                              fontWeight: FontWeight.bold,
+                              textStyle: TextStyle(
+                                  fontSize: MediaQuery.of(context).size.width *
+                                      0.028),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'NIK : 2210191025',
-                          style: GoogleFonts.lato(
-                            textStyle: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.03),
-                          ),
-                        ),
-                        Text(
-                          'Operasional : Surabaya',
-                          style: GoogleFonts.lato(
-                            textStyle: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.03),
-                          ),
-                        ),
-                        Text(
-                          'Email : Sudajtmiko@gmail.com',
-                          style: GoogleFonts.lato(
-                            textStyle: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.03),
-                          ),
-                        ),
-                        Text(
-                          'Telpon : 082121889087',
-                          style: GoogleFonts.lato(
-                            textStyle: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.03),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

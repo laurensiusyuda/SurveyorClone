@@ -22,11 +22,24 @@ class Request extends GetConnect {
     } catch (e) {
       print(e);
     }
+  }
 
-    Future getDetailUser() async {
-      try {} catch (e) {
-        print(e);
+  Future getDetailUser(params, reqHeaders) async {
+    var response;
+    try {
+      response = await post(Appstrings.DetailUserUrl, params,
+              headers: reqHeaders, contentType: content)
+          .timeout(reqTimeout);
+      if (response.statusCode == 200) {
+        print("Success to fetch data. Status Code: ${response.statusCode}");
+        print("Response Body = ${response.body}");
+        return response;
+      } else {
+        print("Failed to fetch data. Status Code: ${response.statusCode}");
+        return null;
       }
+    } catch (e) {
+      print(e);
     }
   }
 }

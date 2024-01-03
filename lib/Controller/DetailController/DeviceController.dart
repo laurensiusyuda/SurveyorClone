@@ -1,19 +1,18 @@
 // ignore_for_file: file_names, unused_local_variable, avoid_print
 
 import 'dart:io';
-
 import 'package:get/get.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:android_id/android_id.dart';
 import 'package:surveyor_clone/Model/DeviceModel.dart';
 
 class DeviceUserController extends GetxController {
-  Device? device; // Make the device field nullable
+  Device? device;
 
   @override
   void onInit() {
     super.onInit();
-    getDeviceID(); // Initialize the device object
+    getDeviceID();
   }
 
   Future<void> getDeviceID() async {
@@ -24,8 +23,8 @@ class DeviceUserController extends GetxController {
         var iosDeviceInfo = await deviceInfo.iosInfo;
         device = Device(
           deviceId: iosDeviceInfo.identifierForVendor ?? '',
-          manufacture: iosInfo.name ?? '',
-          model: iosInfo.model ?? '',
+          manufacture: iosInfo.name,
+          model: iosInfo.model,
           sdk: 0,
         );
       } catch (e) {
@@ -34,12 +33,11 @@ class DeviceUserController extends GetxController {
     } else if (Platform.isAndroid) {
       try {
         var androidDeviceInfo = await deviceInfo.androidInfo;
-        // use the new pub.dev to get android id
         const androidIdPlugin = AndroidId();
         device = Device(
           deviceId: (await androidIdPlugin.getId()) ?? '',
-          manufacture: androidDeviceInfo.manufacturer ?? '',
-          model: androidDeviceInfo.model ?? '',
+          manufacture: androidDeviceInfo.manufacturer,
+          model: androidDeviceInfo.model,
           sdk: androidDeviceInfo.version.sdkInt,
         );
       } catch (e) {
