@@ -1,12 +1,7 @@
 //terpisah 
 ✔ Menampilkan Gambar List @done(23-12-21 10:41)
 ✔ Menghapus Gambar List @done(23-12-21 16:23)
-
-//gabungan menjadi satu 
-☐ menampilkan gambar dan catatan dalam satu list yang sama 
-☐ memperbaiki tampilan dan catatan 
 ✔ memperbaiki detail model @started(23-12-22 01:26) @done(23-12-26 17:50) @lasted(4d16h24m50s)
 
-//menuggu api
-☐ kirim ke api 
+//Get data detail
 

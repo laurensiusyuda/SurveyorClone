@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:surveyor_clone/View/Pages/HomePage.dart';
 import 'package:surveyor_clone/View/Pages/LoginPage.dart';
-import 'package:surveyor_clone/Controller/AuthenticationManager.dart';
+import 'package:surveyor_clone/Controller/AuthController/AuthenticationManager.dart';
 import 'package:surveyor_clone/View/Widget/Splash/Splash.dart';
 
 class SplashScreen extends StatelessWidget {

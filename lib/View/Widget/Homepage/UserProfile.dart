@@ -92,15 +92,6 @@ class UserProfileScreen extends StatelessWidget {
                                       0.028),
                             ),
                           ),
-                          Text(
-                            'Operasional : Surabaya',
-                            style: GoogleFonts.lato(
-                              fontWeight: FontWeight.bold,
-                              textStyle: TextStyle(
-                                  fontSize: MediaQuery.of(context).size.width *
-                                      0.028),
-                            ),
-                          ),
                         ],
                       ),
                     ),

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:surveyor_clone/services/Connect.dart';
 import 'package:surveyor_clone/Model/LoginRequest.dart';
-import 'package:surveyor_clone/Controller/AuthenticationManager.dart';
+import 'package:surveyor_clone/Controller/AuthController/AuthenticationManager.dart';
 
 class LoginController extends GetxController {
   final isShowingPassword = true.obs;

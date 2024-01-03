@@ -4,16 +4,14 @@ import 'package:surveyor_clone/Helper/Constant.dart';
 import 'package:surveyor_clone/Controller/LoginController.dart';
 
 class LoginForm extends StatelessWidget {
-  //controller email and password
   final GlobalKey<FormState> formkey = GlobalKey();
   final TextEditingController emailcontroller = TextEditingController();
   final TextEditingController passcontroller = TextEditingController();
-  //login controller
   final LoginController loginc = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Form(
-      // autovalidateMode: AutovalidateMode.onUserInteraction,
       key: formkey,
       child: Column(
         children: [
@@ -34,10 +32,8 @@ class LoginForm extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          //email field
           TextFormField(
             controller: emailcontroller,
-            // add validator if email empty send the error message
             validator: (value) {
               return (value == null || value.isEmpty) ? 'Masukan Email' : null;
             },
@@ -61,9 +57,7 @@ class LoginForm extends StatelessWidget {
               controller: passcontroller,
               obscureText: loginc.isShowingPassword.value,
               obscuringCharacter: '*',
-              // add the validator if password empty send the error message
               validator: (value) {
-                //make two validator
                 if (value == null || value.isEmpty) {
                   return 'Masukan Password';
                 } else if (value != passcontroller.text) {
@@ -79,12 +73,10 @@ class LoginForm extends StatelessWidget {
                 contentPadding:
                     const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                 prefixIconConstraints: const BoxConstraints(minWidth: 60),
-                // add show password fitur if user pres the password can display
                 suffixIcon: IconButton(
                   onPressed: () {
                     loginc.isShowingPassword.toggle();
                   },
-                  // make const
                   icon: Icon(loginc.isShowingPassword.isTrue
                       ? Icons.remove_red_eye
                       : Icons.remove_red_eye_outlined),

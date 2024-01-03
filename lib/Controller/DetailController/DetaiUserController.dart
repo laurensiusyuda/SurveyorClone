@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:surveyor_clone/Model/DataUser.dart';
 import 'package:surveyor_clone/services/Connect.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:surveyor_clone/Controller/AuthenticationManager.dart';
+import 'package:surveyor_clone/Controller/AuthController/AuthenticationManager.dart';
 import 'package:surveyor_clone/Controller/DetailController/DeviceController.dart';
 import 'package:surveyor_clone/Controller/DetailController/FCMController.dart';
 

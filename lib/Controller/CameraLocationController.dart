@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:surveyor_clone/Model/ImageData.dart';
-import 'package:surveyor_clone/Controller/GeoLocationControl.dart';
+import 'package:surveyor_clone/Controller/AuthController/GeoLocationControl.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 
 class CameraLocationController extends GetxController {
