@@ -1,23 +1,27 @@
-// ignore_for_file: file_names, non_constant_identifier_names, unused_local_variable, avoid_print, unnecessary_this, await_only_futures
+// ignore_for_file: non_constant_identifier_names, file_names, avoid_print, await_only_futures
+
+import 'dart:io';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:surveyor_clone/Model/DataUser.dart';
 import 'package:surveyor_clone/services/Connect.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:surveyor_clone/Controller/AuthController/AuthenticationManager.dart';
 import 'package:surveyor_clone/Controller/DetailController/DeviceController.dart';
 import 'package:surveyor_clone/Controller/DetailController/FCMController.dart';
+import 'package:surveyor_clone/Controller/DetailController/ConnectionController.dart';
 
 class DetailUserController extends GetxController {
   late final Request DetailService;
   late final FCMController FcmControllerToken;
   late final DeviceUserController DeviceUserId;
   late final AuthenticationManager AuthToken;
+  late final ConnectionController connectionController;
 
   RxString headers = ''.obs;
   RxString params = ''.obs;
   RxList<Datauser> userData = <Datauser>[].obs;
-  RxBool CInternetCon = false.obs; // check internet connection
-  RxBool isloading = false.obs; // loading state
+  RxBool isloading = false.obs;
 
   @override
   void onInit() {
@@ -26,22 +30,35 @@ class DetailUserController extends GetxController {
     DeviceUserId = Get.put(DeviceUserController());
     FcmControllerToken = Get.put(FCMController());
     AuthToken = Get.put(AuthenticationManager());
+    connectionController = Get.put(ConnectionController());
     FcmControllerToken.initFCM();
+
+    // Fetch user data when connectivity changes
+    ever(connectionController.connectionStatus, (_) {
+      if (connectionController.connectionStatus.value !=
+          ConnectivityResult.none) {
+        fetchDetailUser();
+      }
+    });
+
+    // Fetch user data initially
     fetchDetailUser();
-    ever(Get.parameters["debug"] == "true" ? RxBool(true) : CInternetCon,
-        (_) => fetchDetailUser());
   }
 
   Future<bool> checkInternetConnection() async {
-    var connectivityResult = await Connectivity().checkConnectivity();
-    return connectivityResult != ConnectivityResult.none;
+    try {
+      final result = await InternetAddress.lookup('example.com');
+      return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+    } on SocketException catch (_) {
+      return false;
+    }
   }
 
   Future<void> fetchDetailUser() async {
     isloading.value = true;
-    CInternetCon.value = await checkInternetConnection();
+    var isInternetConnected = await checkInternetConnection();
 
-    if (!CInternetCon.value) {
+    if (!isInternetConnected) {
       isloading.value = false;
       return;
     }
@@ -73,7 +90,7 @@ class DetailUserController extends GetxController {
             this.params.value = params.toString();
 
             print("Headers: $headers");
-            print("FCMTOken: $fcmID");
+            print("FCMToken: $fcmID");
             print("Params: $params");
           }
         },

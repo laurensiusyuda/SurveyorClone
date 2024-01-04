@@ -11,7 +11,7 @@ import 'package:surveyor_clone/Route/RouteName.dart';
 import 'Controller/DetailController/DeviceController.dart';
 import 'package:surveyor_clone/Controller/LoginController.dart';
 import 'package:surveyor_clone/Controller/GeoLocationControl.dart';
-import 'package:surveyor_clone/Controller/AuthenticationManager.dart';
+import 'package:surveyor_clone/Controller/AuthController/AuthenticationManager.dart';
 import 'package:surveyor_clone/Controller/CameraLocationController.dart';
 import 'package:surveyor_clone/Controller/DetailController/DetaiUserController.dart';
 import 'package:surveyor_clone/Controller/DetailController/FCMController.dart';

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:surveyor_clone/Controller/CameraLocationController.dart';
-import 'package:surveyor_clone/Controller/AuthController/GeoLocationControl.dart';
+import 'package:surveyor_clone/Controller/GeoLocationControl.dart';
 
 class ImageModelScreen extends GetView<CameraLocationController> {
   final cameraC = Get.find<CameraLocationController>();
