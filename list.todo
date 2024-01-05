@@ -5,5 +5,7 @@
 
 //Get data detail
 ✔ menampilkan data detail user @done(24-01-03 20:23)
-☐ memberikan handle jika tidak ada koneksi 
+✔ memberikan handle jika tidak ada koneksi @started(24-01-04 11:50) @done(24-01-04 11:50) @lasted(39s)
 
+//Login and Forgot Password
+☐ menampilkan login dan forgot password @started(24-01-04 11:54)

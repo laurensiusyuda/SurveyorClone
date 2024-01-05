@@ -1,7 +1,7 @@
-// ignore_for_file: avoid_print, non_constant_identifier_names
+// ignore_for_file: avoid_print, non_constant_identifier_names, file_names
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:surveyor_clone/services/Connect.dart';
+import 'package:surveyor_clone/Services/Connect.dart';
 import 'package:surveyor_clone/Model/LoginRequest.dart';
 import 'package:surveyor_clone/Controller/AuthController/AuthenticationManager.dart';
 
@@ -22,7 +22,7 @@ class LoginController extends GetxController {
             LoginRequestModel(email: email, password: password), null)
         .then(
       (value) {
-        print('on submit');
+        print('ON SUBMIT');
         print('data: $value');
         print('${value.body}');
         var result = value.body;

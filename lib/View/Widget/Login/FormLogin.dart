@@ -1,7 +1,11 @@
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, file_names
+
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:surveyor_clone/Helper/Constant.dart';
-import 'package:surveyor_clone/Controller/LoginController.dart';
+import 'package:surveyor_clone/Controller/AuthController/LoginController.dart';
+import 'package:surveyor_clone/Route/RouteName.dart';
 
 class LoginForm extends StatelessWidget {
   final GlobalKey<FormState> formkey = GlobalKey();
@@ -17,29 +21,44 @@ class LoginForm extends StatelessWidget {
         children: [
           Image.asset(
             Appstrings.assetsLogo,
-            width: 250,
+            width: 300,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            'SURVEYOR TMI',
+            style: GoogleFonts.lato(
+              textStyle: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
           ),
           const SizedBox(
             height: 20,
           ),
-          const Text(
-            'SURVEYOR TMI',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
+
           TextFormField(
             controller: emailcontroller,
             validator: (value) {
               return (value == null || value.isEmpty) ? 'Masukan Email' : null;
             },
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Email',
+              labelStyle: GoogleFonts.lato(
+                textStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ),
+              ),
               hintText: 'Masukan Email Karywan',
+              hintStyle: GoogleFonts.lato(
+                textStyle: TextStyle(
+                  fontSize: 12,
+                ),
+              ),
               icon: Icon(Icons.person),
               contentPadding:
                   EdgeInsets.symmetric(vertical: 12, horizontal: 12),
@@ -51,7 +70,6 @@ class LoginForm extends StatelessWidget {
             height: 20,
           ),
 
-          //password field
           Obx(
             () => TextFormField(
               controller: passcontroller,
@@ -68,7 +86,18 @@ class LoginForm extends StatelessWidget {
               },
               decoration: InputDecoration(
                 labelText: 'Password',
+                labelStyle: GoogleFonts.lato(
+                  textStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
                 hintText: 'Masukan Password Karyawan',
+                hintStyle: GoogleFonts.lato(
+                  textStyle: TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
                 icon: const Icon(Icons.lock),
                 contentPadding:
                     const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
@@ -86,17 +115,42 @@ class LoginForm extends StatelessWidget {
           ),
 
           const SizedBox(
-            height: 40,
+            height: 18,
+          ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              InkWell(
+                onTap: () {
+                  Get.toNamed(RouteName.forgot);
+                },
+                child: Text(
+                  "Lupa Password ?",
+                  style: GoogleFonts.lato(
+                    textStyle: TextStyle(
+                      fontSize: 12,
+                      color: Colors.blue,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+
+          const SizedBox(
+            height: 50,
           ),
 
           // button login
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              fixedSize: const Size(200, 40),
+              fixedSize: const Size(225, 40),
               backgroundColor: Colors.blue,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0),
-              ), // Set the background color to blue
+                borderRadius: BorderRadius.circular(50.0),
+              ),
             ),
             onPressed: () async {
               if (formkey.currentState!.validate()) {
@@ -105,14 +159,17 @@ class LoginForm extends StatelessWidget {
                     emailcontroller.text, passcontroller.text);
               }
             },
-            child: const Text(
+            child: Text(
               'Masuk',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+              style: GoogleFonts.lato(
+                textStyle: TextStyle(
+                  fontSize: 14,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

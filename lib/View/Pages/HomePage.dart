@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:surveyor_clone/Controller/AuthController/AuthenticationManager.dart';
 import 'package:surveyor_clone/Controller/DetailController/DetaiUserController.dart';
 import 'package:surveyor_clone/Route/RouteName.dart';
-import 'package:surveyor_clone/Controller/LoginController.dart';
+import 'package:surveyor_clone/Controller/AuthController/LoginController.dart';
 import 'package:surveyor_clone/View/Widget/Homepage/UserProfile.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
@@ -102,25 +102,6 @@ class HomeScreen extends StatelessWidget {
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(200, 40),
-                    backgroundColor: Colors.blue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                  onPressed: () {
-                    Get.toNamed(RouteName.test);
-                  },
-                  child: const Text(
-                    'For Test Data',
-                    style: TextStyle(
-                      color: Colors.white,
                     ),
                   ),
                 ),

@@ -2,6 +2,7 @@
 
 import 'package:get/get.dart';
 import 'package:surveyor_clone/Helper/Constant.dart';
+import 'package:surveyor_clone/Model/ForgotRequest.dart';
 import 'package:surveyor_clone/Model/LoginRequest.dart';
 
 class Request extends GetConnect {
@@ -36,6 +37,23 @@ class Request extends GetConnect {
         return response;
       } else {
         print("Failed to fetch data. Status Code: ${response.statusCode}");
+        return null;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future fetchResetPass(ForgotRequestModel model, reqHeaders) async {
+    var response;
+    try {
+      response = await post(Appstrings.ForgotPasswordUrl, model.toJson(),
+              headers: reqHeaders, contentType: content)
+          .timeout(reqTimeout);
+      if (response.statuscode == 200) {
+        print(response);
+        return response;
+      } else {
         return null;
       }
     } catch (e) {

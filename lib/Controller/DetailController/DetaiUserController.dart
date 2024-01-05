@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:surveyor_clone/Model/DataUser.dart';
-import 'package:surveyor_clone/services/Connect.dart';
+import 'package:surveyor_clone/Services/Connect.dart';
 import 'package:surveyor_clone/Controller/AuthController/AuthenticationManager.dart';
 import 'package:surveyor_clone/Controller/DetailController/DeviceController.dart';
 import 'package:surveyor_clone/Controller/DetailController/FCMController.dart';
@@ -64,6 +64,7 @@ class DetailUserController extends GetxController {
     }
 
     await Future.delayed(const Duration(seconds: 2));
+
     String? token = AuthToken.getToken();
     if (token != null) {
       var headers = {
