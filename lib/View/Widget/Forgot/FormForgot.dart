@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, file_names, unused_local_variable, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:surveyor_clone/Controller/AuthController/ForgotPasswordController.dart';
 
 class ForgotForm extends StatelessWidget {
   const ForgotForm({super.key});
@@ -11,7 +13,7 @@ class ForgotForm extends StatelessWidget {
     final GlobalKey<FormState> formkey = GlobalKey();
     final TextEditingController emailcontroller = TextEditingController();
     final TextEditingController nikcontroller = TextEditingController();
-  final LoginController loginc = Get.find();
+    final ForgotPasswordController forgotPasswordC = Get.find();
 
     return Form(
       key: formkey,
@@ -86,7 +88,10 @@ class ForgotForm extends StatelessWidget {
             ),
             onPressed: () async {
               if (formkey.currentState!.validate()) {
-                await lo
+                await forgotPasswordC.forgotpasswordUser(
+                  emailcontroller.text,
+                  nikcontroller.text,
+                );
               }
             },
             child: Text(
