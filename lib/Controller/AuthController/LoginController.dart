@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:surveyor_clone/Services/Connect.dart';
 import 'package:surveyor_clone/Model/LoginRequest.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:surveyor_clone/Controller/AuthController/AuthenticationManager.dart';
 
 class LoginController extends GetxController {
@@ -32,6 +33,7 @@ class LoginController extends GetxController {
           AuthManager.login(result['data']['access_token']);
         } else {
           print(result['message']);
+
           Get.dialog(
             AlertDialog(
               title: const Text('Peringatan'),

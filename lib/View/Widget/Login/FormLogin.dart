@@ -39,7 +39,6 @@ class LoginForm extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-
           TextFormField(
             controller: emailcontroller,
             validator: (value) {
@@ -65,11 +64,9 @@ class LoginForm extends StatelessWidget {
               prefixIconConstraints: BoxConstraints(minWidth: 60),
             ),
           ),
-
           const SizedBox(
             height: 20,
           ),
-
           Obx(
             () => TextFormField(
               controller: passcontroller,
@@ -113,11 +110,9 @@ class LoginForm extends StatelessWidget {
               ),
             ),
           ),
-
           const SizedBox(
             height: 18,
           ),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -138,12 +133,9 @@ class LoginForm extends StatelessWidget {
               )
             ],
           ),
-
           const SizedBox(
             height: 50,
           ),
-
-          // button login
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               fixedSize: const Size(225, 40),
@@ -154,7 +146,6 @@ class LoginForm extends StatelessWidget {
             ),
             onPressed: () async {
               if (formkey.currentState!.validate()) {
-                // masuk kedalam kontroller login
                 await loginc.loginuser(
                     emailcontroller.text, passcontroller.text);
               }

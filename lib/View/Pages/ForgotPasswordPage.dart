@@ -10,7 +10,15 @@ class ForgotPasswordScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('LUPA KATA SANDI'),
+          title: Text(
+            'Lupa Kata Sandi',
+            style: GoogleFonts.lato(
+              textStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+          ),
           centerTitle: true,
         ),
         body: Center(

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, avoid_print, file_names, unused_element
+// ignore_for_file: prefer_typing_uninitialized_variables, avoid_print, file_names, unused_element, prefer_interpolation_to_compose_strings
 
 import 'package:get/get.dart';
 import 'package:surveyor_clone/Helper/Constant.dart';
@@ -16,8 +16,10 @@ class Request extends GetConnect {
               headers: reqHeaders, contentType: content)
           .timeout(reqTimeout);
       if (response.statusCode == 200) {
+        print("Status Code ${response.statusCode}");
         return response;
       } else {
+        print("Status Code ${response.statusCode}");
         return null;
       }
     } catch (e) {
@@ -50,14 +52,18 @@ class Request extends GetConnect {
       response = await post(Appstrings.ForgotPasswordUrl, model.toJson(),
               headers: reqHeaders, contentType: content)
           .timeout(reqTimeout);
-      if (response.statuscode == 200) {
-        print(response);
+      if (response.statusCode == 200) {
+        print("Status Code ${response.statusCode}");
+        return response;
+      } else if (response.statusCode == 401) {
         return response;
       } else {
-        return null;
+        print("Status Code: ${response.statusCode}");
       }
     } catch (e) {
       print(e);
     }
   }
+
+  // Future {}
 }
