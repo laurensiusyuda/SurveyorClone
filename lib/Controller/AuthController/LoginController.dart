@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print, non_constant_identifier_names, file_names
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:surveyor_clone/Services/Connect.dart';
 import 'package:surveyor_clone/Model/LoginRequest.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -18,7 +19,8 @@ class LoginController extends GetxController {
     AuthManager = Get.find();
   }
 
-  Future<void> loginuser(String email, String password) async {
+  Future<void> loginuser(
+      BuildContext context, String email, String password) async {
     await LoginService.fetchlogin(
             LoginRequestModel(email: email, password: password), null)
         .then(
@@ -33,19 +35,25 @@ class LoginController extends GetxController {
           AuthManager.login(result['data']['access_token']);
         } else {
           print(result['message']);
-
-          Get.dialog(
-            AlertDialog(
-              title: const Text('Peringatan'),
-              content: Text(result['message']),
-              actions: [
-                TextButton(
-                  child: const Text("Close"),
-                  onPressed: () => Get.back(),
-                ),
-              ],
+          AwesomeDialog(
+            context: context,
+            animType: AnimType.scale,
+            dialogType: DialogType.error,
+            title: 'Gagal Login',
+            titleTextStyle: GoogleFonts.lato(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
             ),
-          );
+            desc: "${result['message']}",
+            descTextStyle: GoogleFonts.lato(
+              color: Colors.red,
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+            ),
+            btnOkOnPress: () {
+              Get.back();
+            },
+          ).show();
         }
       },
     );

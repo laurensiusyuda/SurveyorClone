@@ -5,7 +5,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:surveyor_clone/View/Pages/HomePage.dart';
 import 'package:surveyor_clone/View/Pages/SplashScreen.dart';
 
-enum CacheManagerKey { TOKEN }
+enum CacheManagerKey { TOKEN, TOKENFORGOT }
 
 class AuthenticationManager extends GetxController {
   final isLogged = false.obs;
@@ -22,6 +22,7 @@ class AuthenticationManager extends GetxController {
     Get.offAll(() => SplashScreen());
   }
 
+  //Login
   Future<bool> saveToken(String? token) async {
     final box = GetStorage();
     await box.write(CacheManagerKey.TOKEN.toString(), token);
@@ -43,5 +44,17 @@ class AuthenticationManager extends GetxController {
     if (token != null) {
       isLogged.value = true;
     }
+  }
+
+  //Reset Password
+  Future<bool> saveTokenResetPassword(String? token) async {
+    final box = GetStorage();
+    await box.write(CacheManagerKey.TOKENFORGOT.toString(), token);
+    return true;
+  }
+
+  String? getTokenResetPassword() {
+    final box = GetStorage();
+    return box.read(CacheManagerKey.TOKENFORGOT.toString());
   }
 }

@@ -1,25 +1,23 @@
-// ignore_for_file: prefer_const_constructors, file_names, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:surveyor_clone/View/Widget/Forgot/FormForgot.dart';
+import 'package:surveyor_clone/View/Widget/Forgot/FormOTPVerify.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
+class OTPVerifyScreen extends StatelessWidget {
+  var data = Get.arguments;
+
   @override
   Widget build(BuildContext context) {
+    String email = data['email'];
+    String nik = data['nik'];
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            'Lupa Kata Sandi',
-            style: GoogleFonts.lato(
-              textStyle: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-          ),
           centerTitle: true,
+          title: Text('OTP KODE VERIFY'),
         ),
         body: Center(
           child: Padding(
@@ -28,7 +26,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Masukan Email dan NIK yang terdaftar di aplikasi pendamping TMI',
+                  'Silakan masukkan kode OTP yang telah dikirimkan melalui email $email',
                   style: GoogleFonts.lato(
                     color: Colors.black45,
                     fontSize: 15,
@@ -39,7 +37,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                ForgotForm(),
+                FormForgot(email: email, nik: nik),
               ],
             ),
           ),

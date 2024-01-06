@@ -3,17 +3,21 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:surveyor_clone/Controller/AuthController/AuthenticationManager.dart';
 import 'package:surveyor_clone/Model/ForgotRequest.dart';
 import 'package:surveyor_clone/Services/Connect.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:surveyor_clone/View/Pages/OTPVerifiyPage.dart';
 
 class ForgotPasswordController extends GetxController {
   late final Request ForgotPasswordService;
+  late final AuthenticationManager AuthManager;
 
   @override
   void onInit() {
     super.onInit();
     ForgotPasswordService = Get.put(Request());
+    AuthManager = Get.find();
   }
 
   Future<void> forgotpasswordUser(
@@ -30,6 +34,7 @@ class ForgotPasswordController extends GetxController {
         print('DATA ${result.toString()}');
         if (result['status'] == 1) {
           print('${result['status'] == 1}');
+          AuthManager.saveTokenResetPassword(result['data']['access_token']);
           AwesomeDialog(
             context: context,
             animType: AnimType.scale,
@@ -45,14 +50,21 @@ class ForgotPasswordController extends GetxController {
               fontSize: 12,
               fontWeight: FontWeight.w400,
             ),
-            btnOkOnPress: () {},
+            btnOkOnPress: () {
+              Get.to(
+                OTPVerifyScreen(),
+                arguments: {
+                  'email': email,
+                  'nik': nik,
+                },
+              );
+            },
           );
         } else if (result['status'] == 0) {
           print('${result['status'] == 0}');
           var message = result['message'];
           var emailErrors = (message['email'] as List<String>?) ?? [];
           var nikErrors = (message['nik'] as List<String>?) ?? [];
-
           if (message is String) {
             AwesomeDialog(
               context: context,
@@ -138,4 +150,6 @@ class ForgotPasswordController extends GetxController {
       },
     );
   }
+
+  Future<void> verifyOtpCode(String email, String nik, String OTPCode) async {}
 }

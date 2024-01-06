@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_const_constructors, file_names, unused_local_variable, prefer_const_literals_to_create_immutables
 
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:surveyor_clone/Controller/AuthController/ForgotPasswordController.dart';
 
