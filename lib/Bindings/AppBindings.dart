@@ -11,19 +11,23 @@ import 'package:surveyor_clone/Controller/DetailController/DeviceController.dart
 import 'package:surveyor_clone/Controller/DetailController/FCMController.dart';
 import 'package:surveyor_clone/Controller/GeoLocationControl.dart';
 
-void bindControllers() {
-  // Controller Login
-  Get.put<AuthenticationManager>(AuthenticationManager());
-  Get.put<LoginController>(LoginController());
-  Get.put<ForgotPasswordController>(ForgotPasswordController());
+class InitialBinding implements Bindings {
+  @override
+  void dependencies() {
+    // Controller Login
+    Get.put<AuthenticationManager>(AuthenticationManager());
+    Get.put<LoginController>(LoginController());
+    Get.put<ForgotPasswordController>(ForgotPasswordController());
+    Get.put<FCMController>(FCMController());
 
-  // Controller to Get Detail User
-  Get.put<FCMController>(FCMController());
-  Get.put<DeviceUserController>(DeviceUserController());
-  Get.put<DetailUserController>(DetailUserController());
+    // Controller to Get Detail User
+    Get.put<DetailUserController>(DetailUserController());
+    Get.put<FCMController>(FCMController());
+    Get.put<DeviceUserController>(DeviceUserController());
 
-  // Controller to Handle Camera Action
-  Get.put<CameraLocationController>(CameraLocationController());
-  Get.put<ScreenshotController>(ScreenshotController());
-  Get.put<GeoLocationController>(GeoLocationController());
+    // Controller to Handle Camera Action
+    Get.put<CameraLocationController>(CameraLocationController());
+    Get.put<ScreenshotController>(ScreenshotController());
+    Get.put<GeoLocationController>(GeoLocationController());
+  }
 }

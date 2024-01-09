@@ -15,7 +15,6 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await GetStorage.init();
-  bindControllers();
   runApp(MyApp());
 }
 
@@ -31,6 +30,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: RouteName.splash,
       getPages: AppRoute.pages,
+      initialBinding: InitialBinding(),
     );
   }
 }

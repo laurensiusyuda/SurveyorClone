@@ -63,21 +63,6 @@ class HomeScreen extends StatelessWidget {
             return Center(
               child: CircularProgressIndicator(),
             );
-          } else if (detailController.userData.isEmpty) {
-            return SingleChildScrollView(
-              child: Center(
-                child: Text(
-                  'No data available.',
-                  style: GoogleFonts.lato(
-                    textStyle: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            );
           } else {
             return Column(
               children: [

@@ -71,8 +71,13 @@ class ForgotForm extends StatelessWidget {
                   fontSize: 12,
                 ),
               ),
-              contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-              prefixIconConstraints: BoxConstraints(minWidth: 60),
+              contentPadding: EdgeInsets.symmetric(
+                vertical: 5,
+                horizontal: 5,
+              ),
+              prefixIconConstraints: BoxConstraints(
+                minWidth: 60,
+              ),
             ),
           ),
           const SizedBox(

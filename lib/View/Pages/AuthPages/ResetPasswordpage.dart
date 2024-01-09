@@ -1,32 +1,37 @@
-// ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
+// ignore_for_file: file_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:surveyor_clone/View/Widget/Forgot/FormOTPVerify.dart';
+import 'package:surveyor_clone/View/Widget/AuthWidget/FormResetPassword.dart';
 
-class OTPVerifyScreen extends StatelessWidget {
-  var data = Get.arguments;
+class ResetForgotPasswordScreen extends StatelessWidget {
+  final Map<String, String> data = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
-    String email = data['email'];
-    String nik = data['nik'];
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.blue,
           centerTitle: true,
-          title: Text('OTP KODE VERIFY'),
+          title: Text(
+            'Masukkan Kata Sandi Baru',
+            style: GoogleFonts.lato(
+              textStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+          ),
         ),
         body: Center(
           child: Padding(
             padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Silakan masukkan kode OTP yang telah dikirimkan melalui email $email',
+                  'Silakan Masukkan Kata Sandi Baru Anda. Mohon periksa dan pastikan kata sandi sesuai',
                   style: GoogleFonts.lato(
                     color: Colors.black45,
                     fontSize: 15,
@@ -37,7 +42,8 @@ class OTPVerifyScreen extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                FormForgot(email: email, nik: nik),
+                FormResetPassword(
+                    email: data['email']!, otp_code: data['otp_code']!),
               ],
             ),
           ),

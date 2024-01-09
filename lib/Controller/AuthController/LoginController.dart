@@ -2,8 +2,9 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:surveyor_clone/Controller/DetailController/DetaiUserController.dart';
+import 'package:surveyor_clone/Model/AuthModel/LoginModel.dart';
 import 'package:surveyor_clone/Services/Connect.dart';
-import 'package:surveyor_clone/Model/LoginRequest.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:surveyor_clone/Controller/AuthController/AuthenticationManager.dart';
 
@@ -11,11 +12,13 @@ class LoginController extends GetxController {
   final isShowingPassword = true.obs;
   late final Request LoginService;
   late final AuthenticationManager AuthManager;
+  late final DetailUserController detailUserController;
 
   @override
   void onInit() {
     super.onInit();
     LoginService = Get.put(Request());
+    detailUserController = Get.put(DetailUserController());
     AuthManager = Get.find();
   }
 
@@ -33,6 +36,7 @@ class LoginController extends GetxController {
           print(result['status']);
           print(result['data']['access_token']);
           AuthManager.login(result['data']['access_token']);
+          detailUserController.fetchDetailUser();
         } else {
           print(result['message']);
           AwesomeDialog(
@@ -50,9 +54,7 @@ class LoginController extends GetxController {
               fontSize: 12,
               fontWeight: FontWeight.w400,
             ),
-            btnOkOnPress: () {
-              Get.back();
-            },
+            btnOkOnPress: () {},
           ).show();
         }
       },

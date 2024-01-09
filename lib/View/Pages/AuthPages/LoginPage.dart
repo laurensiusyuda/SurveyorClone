@@ -1,7 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, file_names
 
 import 'package:flutter/material.dart';
-import 'package:surveyor_clone/View/Widget/Login/FormLogin.dart';
+import 'package:surveyor_clone/View/Widget/AuthWidget/FormLogin.dart';
 
 class LoginScreen extends StatelessWidget {
   @override

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:surveyor_clone/Model/ImageData.dart';
+import 'package:surveyor_clone/Model/ImageDataModel.dart';
 import 'package:surveyor_clone/Controller/GeoLocationControl.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 

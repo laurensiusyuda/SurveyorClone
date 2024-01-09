@@ -32,16 +32,12 @@ class DetailUserController extends GetxController {
     AuthToken = Get.put(AuthenticationManager());
     connectionController = Get.put(ConnectionController());
     FcmControllerToken.initFCM();
-
-    // Fetch user data when connectivity changes
     ever(connectionController.connectionStatus, (_) {
       if (connectionController.connectionStatus.value !=
           ConnectivityResult.none) {
         fetchDetailUser();
       }
     });
-
-    // Fetch user data initially
     fetchDetailUser();
   }
 
@@ -57,14 +53,11 @@ class DetailUserController extends GetxController {
   Future<void> fetchDetailUser() async {
     isloading.value = true;
     var isInternetConnected = await checkInternetConnection();
-
     if (!isInternetConnected) {
       isloading.value = false;
       return;
     }
-
     await Future.delayed(const Duration(seconds: 2));
-
     String? token = AuthToken.getToken();
     if (token != null) {
       var headers = {
@@ -81,15 +74,18 @@ class DetailUserController extends GetxController {
         },
         "fcm_token": fcmID
       };
+
+      print(params);
+
       await DetailService.getDetailUser(params, headers).then(
         (value) {
           if (value != null) {
+            userData.clear();
             var dataUser = Datauser.fromJson(value.body);
+            print(dataUser);
             userData.add(dataUser);
-
             this.headers.value = "Bearer $token";
             this.params.value = params.toString();
-
             print("Headers: $headers");
             print("FCMToken: $fcmID");
             print("Params: $params");

@@ -33,15 +33,12 @@ class UserProfileScreen extends StatelessWidget {
           () => Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(
-                width: 15,
-              ),
               CircleAvatar(
                 radius: MediaQuery.of(context).size.width * 0.1,
                 backgroundColor: Colors.white,
                 child: Icon(
                   Icons.person,
-                  size: MediaQuery.of(context).size.width * 0.15,
+                  size: MediaQuery.of(context).size.width * 0.20,
                   color: Colors.blue,
                 ),
               ),
@@ -59,7 +56,7 @@ class UserProfileScreen extends StatelessWidget {
                           textStyle: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize:
-                                  MediaQuery.of(context).size.width * 0.028),
+                                  MediaQuery.of(context).size.width * 0.027),
                         ),
                       ),
                       subtitle: Column(
@@ -71,7 +68,7 @@ class UserProfileScreen extends StatelessWidget {
                               textStyle: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: MediaQuery.of(context).size.width *
-                                      0.028),
+                                      0.027),
                             ),
                           ),
                           Text(
@@ -80,7 +77,7 @@ class UserProfileScreen extends StatelessWidget {
                               textStyle: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: MediaQuery.of(context).size.width *
-                                      0.028),
+                                      0.027),
                             ),
                           ),
                           Text(
@@ -89,7 +86,7 @@ class UserProfileScreen extends StatelessWidget {
                               textStyle: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: MediaQuery.of(context).size.width *
-                                      0.028),
+                                      0.027),
                             ),
                           ),
                         ],
